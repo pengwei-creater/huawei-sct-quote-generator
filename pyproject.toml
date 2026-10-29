@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sct-quote-generator"
+version = "1.0.0"
+description = "Generate customer-facing quote sheets from Huawei SCT exports"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "pengwei-creater" }]
+keywords = ["quote", "excel", "sct", "openpyxl", "huawei"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Office/Business :: Financial :: Accounting",
+]
+dependencies = ["openpyxl>=3.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+quote-gen = "quote_generator.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+quote_generator = ["templates/*.xlsx"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+
+# Office 临时文件
+~$*.xlsx
+~$*.docx
+*.tmp
+
+# 生成物
+sct.json
+examples/sample_sct.xlsx
+*.pdf
+示例报价单*.xlsx
+demo.xlsx
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
