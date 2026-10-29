@@ -80,7 +80,17 @@ def cmd_selftest(_args):
     return 0
 
 
+def _use_utf8_console():
+    """Windows 控制台默认 cp1252，打印中文会 UnicodeEncodeError，统一改成 UTF-8。"""
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):  # 老版本 Python 或被重定向的流
+            pass
+
+
 def main(argv=None):
+    _use_utf8_console()
     parser = argparse.ArgumentParser(
         prog="quote-gen", description="华为 SCT 报价书解析与报价单生成")
     parser.add_argument("--version", action="version", version="%(prog)s " + __version__)
